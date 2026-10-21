@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="462" viewBox="0 0 760 462" role="img" aria-label="slipway progress tracker: 7% of gates closed">
+<defs>
+<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f6e8c8"/><rect width="2.5" height="6" fill="#bf8700"/></pattern>
+</defs>
+<rect x="0" y="0" width="760" height="462" fill="#ffffff"/>
+<text x="20" y="30" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1f2328">slipway — progress tracker</text>
+<text x="740" y="30" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1f2328" text-anchor="end">7%</text>
+<text x="20" y="50" font-family="sans-serif" font-size="12" fill="#57606a">2 of 28 gates closed · 3 delivered, ungated · updated 2026-10-21</text>
+<rect x="20.0" y="60" width="720.0" height="14" rx="3" fill="#e5e7eb"/>
+<rect x="71.4" y="60" width="38.6" height="14" fill="url(#hatch)"/>
+<rect x="20.0" y="60" width="51.4" height="14" rx="3" fill="#2da44e"><animate attributeName="width" from="0" to="51.4" dur="0.8s" fill="freeze"/></rect>
+<circle cx="24" cy="101" r="4" fill="#bf8700"><animate attributeName="opacity" values="1;0.25;1" dur="2.4s" repeatCount="indefinite"/></circle>
+<text x="36" y="105" font-family="sans-serif" font-size="13" fill="#1f2328">Ideation &amp; design</text>
+<text x="740" y="105" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">40%</text>
+<rect x="20.0" y="112" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<rect x="308.0" y="112" width="216.0" height="7" fill="url(#hatch)"/>
+<rect x="20.0" y="112" width="288.0" height="7" rx="3" fill="#2da44e"></rect>
+<circle cx="24" cy="135" r="4" fill="#2da44e"></circle>
+<text x="36" y="139" font-family="sans-serif" font-size="13" fill="#1f2328">S0 — census &amp; pin-down (no server code)</text>
+<text x="740" y="139" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="146" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="169" r="4" fill="#2da44e"></circle>
+<text x="36" y="173" font-family="sans-serif" font-size="13" fill="#1f2328">S1 — read core</text>
+<text x="740" y="173" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="180" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="203" r="4" fill="#2da44e"></circle>
+<text x="36" y="207" font-family="sans-serif" font-size="13" fill="#1f2328">S2 — build + install (unsigned only)</text>
+<text x="740" y="207" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="214" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="237" r="4" fill="#2da44e"></circle>
+<text x="36" y="241" font-family="sans-serif" font-size="13" fill="#1f2328">S2b — device verify</text>
+<text x="740" y="241" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="248" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="271" r="4" fill="#2da44e"></circle>
+<text x="36" y="275" font-family="sans-serif" font-size="13" fill="#1f2328">S3 — signing (consequential class)</text>
+<text x="740" y="275" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="282" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="305" r="4" fill="#2da44e"></circle>
+<text x="36" y="309" font-family="sans-serif" font-size="13" fill="#1f2328">S4 — release prep (Owner-stamped)</text>
+<text x="740" y="309" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="316" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="339" r="4" fill="#2da44e"></circle>
+<text x="36" y="343" font-family="sans-serif" font-size="13" fill="#1f2328">S5 — second customer</text>
+<text x="740" y="343" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="350" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="373" r="4" fill="#2da44e"></circle>
+<text x="36" y="377" font-family="sans-serif" font-size="13" fill="#1f2328">1.0</text>
+<text x="740" y="377" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="384" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<circle cx="24" cy="407" r="4" fill="#2da44e"></circle>
+<text x="36" y="411" font-family="sans-serif" font-size="13" fill="#1f2328">Beyond 1.0</text>
+<text x="740" y="411" font-family="sans-serif" font-size="12" fill="#57606a" text-anchor="end">0%</text>
+<rect x="20.0" y="418" width="720.0" height="7" rx="3" fill="#e5e7eb"/>
+<text x="20" y="452" font-family="sans-serif" font-size="11" fill="#57606a">Generated from CHECKLIST.md — the bar moves only when a gate closes.</text>
+</svg>
