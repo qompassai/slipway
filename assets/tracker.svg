@@ -5,7 +5,7 @@
 <rect x="0" y="0" width="760" height="462" fill="#ffffff"/>
 <text x="20" y="30" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1f2328">slipway — progress tracker</text>
 <text x="740" y="30" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1f2328" text-anchor="end">7%</text>
-<text x="20" y="50" font-family="sans-serif" font-size="12" fill="#57606a">2 of 28 gates closed · 3 delivered, ungated · updated 2026-10-21</text>
+<text x="20" y="50" font-family="sans-serif" font-size="12" fill="#57606a">2 of 28 gates closed · 3 delivered, ungated · gen 1 · 2026-10-21</text>
 <rect x="20.0" y="60" width="720.0" height="14" rx="3" fill="#e5e7eb"/>
 <rect x="71.4" y="60" width="38.6" height="14" fill="url(#hatch)"/>
 <rect x="20.0" y="60" width="51.4" height="14" rx="3" fill="#2da44e"><animate attributeName="width" from="0" to="51.4" dur="0.8s" fill="freeze"/></rect>
