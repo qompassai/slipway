@@ -1,0 +1,47 @@
+# slipway configuration (TOML). Copy to config.toml and adjust.
+# `state_dir` holds the receipt log, certifications, sessions,
+# and bundles. `forbidden_roots` is the methodology firewall:
+# reference material slipway must never touch — config load
+# REFUSES any overlap with a project root, and every artifact
+# path is checked per call.
+
+state_dir = "~/.local/share/slipway"
+
+forbidden_roots = []
+
+# Pubkeys (hex, 32-byte ed25519) of Owners whose sign manifests
+# slipway will honor. Empty = signing refuses everything.
+signer_pubkeys = []
+
+[toolchain]
+# Optional per-tool command overrides (default: PATH lookup).
+# bundletool = "/opt/android-sdk/cmdline-tools/latest/bin/bundletool"
+
+[[projects]]
+id = "light-show"
+name = "Light Show"
+package = "ai.qompass.lightshow"
+root_dir = "~/workspace/repos/light-show"
+build_command = ["bash", "scripts/publish/play-build-aab.sh", "--live"]
+artifacts = ["android/app/build/outputs/bundle/release/app-release.aab"]
+listing_dir = "playstore"
+fastlane_dir = "fastlane/metadata/android"
+fdroid_recipe = "fdroid/ai.qompass.lightshow.yml"
+fdroid_pin = "4e1711da1a3eb87f84f708f39a8319a5f28f90f9"
+app_server_command = ["light-show-mcp"]
+
+[projects.build_env]
+JAVA_HOME = "/usr/lib/jvm/java-17-openjdk"
+ANDROID_HOME = "/opt/android-sdk"
+
+[[projects]]
+id = "ontrack"
+name = "ONTrack"
+package = "ai.qompass.ontrack"
+root_dir = "~/workspace/repos/ontrack"
+artifacts = ["crates/ontrack-mobile/android/app/build/outputs/bundle/release/app-release.aab"]
+listing_dir = "playstore"
+fastlane_dir = "fastlane/metadata/android"
+extra_listing_dirs = ["fastlane/metadata/android/en-US/images"]
+fdroid_recipe = "fdroiddata/ai.qompass.ontrack.yml"
+app_server_command = ["ontrack-mcp"]
