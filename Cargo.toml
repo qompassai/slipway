@@ -3,6 +3,7 @@ name = "slipway-mcp"
 version = "0.1.0"
 edition = "2024"
 license = "Apache-2.0"
+repository = "https://github.com/qompassai/slipway"
 rust-version = "1.88"
 description = "Slipway — the estate's Android build/sign/verify/install/release MCP server: builds the Owner's own apps from their own trees, verifies and installs them, certifies publish readiness by executing the publish skills' gate batteries, and prepares Owner-stamped release bundles. Modern MCP era only (2026-07-28)."
 
