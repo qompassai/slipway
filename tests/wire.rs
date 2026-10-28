@@ -6,23 +6,89 @@
 //! id — rmcp dispatches concurrently, so order is not assumed.
 
 use std::io::{BufRead, BufReader, Write};
+use std::path::PathBuf;
 use std::process::{Child, ChildStdin, Command, Stdio};
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::{Duration, Instant};
 
 use serde_json::{Value, json};
+
+/// A self-provisioned scratch tree for one wire session: a
+/// generated slipway config plus the project roots it names,
+/// all under a unique temp dir. The config these tests used
+/// to read (`config.sandbox.toml`) is machine-local and
+/// deliberately not in the repo, so each session builds its
+/// own — same projects, same shapes, paths rooted here.
+/// Removed on drop.
+struct Scratch {
+    dir: PathBuf,
+}
+
+impl Scratch {
+    fn new() -> Self {
+        static NEXT: AtomicU64 = AtomicU64::new(0);
+        let dir = std::env::temp_dir().join(format!(
+            "slipway-wire-{}-{}",
+            std::process::id(),
+            NEXT.fetch_add(1, Ordering::Relaxed)
+        ));
+        let light_show = dir.join("light-show");
+        let ontrack = dir.join("ontrack");
+        std::fs::create_dir_all(&light_show).expect("mkdir light-show root");
+        std::fs::create_dir_all(&ontrack).expect("mkdir ontrack root");
+        let body = format!(
+            "state_dir = \"{state}\"\n\
+             forbidden_roots = []\n\
+             signer_pubkeys = []\n\
+             \n\
+             [[projects]]\n\
+             id = \"light-show\"\n\
+             name = \"Light Show\"\n\
+             package = \"ai.qompass.lightshow\"\n\
+             root_dir = \"{light_show}\"\n\
+             artifacts = []\n\
+             \n\
+             [[projects]]\n\
+             id = \"ontrack\"\n\
+             name = \"ONTrack\"\n\
+             package = \"ai.qompass.ontrack\"\n\
+             root_dir = \"{ontrack}\"\n\
+             artifacts = []\n",
+            state = dir.join("state").display(),
+            light_show = light_show.display(),
+            ontrack = ontrack.display(),
+        );
+        std::fs::write(dir.join("config.toml"), body).expect("write generated config");
+        Scratch { dir }
+    }
+
+    fn config(&self) -> PathBuf {
+        self.dir.join("config.toml")
+    }
+}
+
+impl Drop for Scratch {
+    fn drop(&mut self) {
+        let _ = std::fs::remove_dir_all(&self.dir);
+    }
+}
 
 struct Session {
     child: Child,
     stdin: ChildStdin,
     reader: BufReader<std::process::ChildStdout>,
     next_id: i64,
+    // Kept alive for the session's life: the generated config
+    // and the project roots it names live in this scratch dir.
+    _scratch: Scratch,
 }
 
 impl Session {
     fn spawn() -> Self {
-        let config = format!("{}/config.sandbox.toml", env!("CARGO_MANIFEST_DIR"));
+        let scratch = Scratch::new();
         let mut child = Command::new(env!("CARGO_BIN_EXE_slipway"))
-            .args(["--config", &config])
+            .arg("--config")
+            .arg(scratch.config())
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .stderr(Stdio::null())
@@ -35,6 +101,7 @@ impl Session {
             stdin,
             reader: BufReader::new(stdout),
             next_id: 0,
+            _scratch: scratch,
         }
     }
 
