@@ -1,0 +1,79 @@
+# Roadmap — slipway (mcp) — v0.1 → v1.0
+<!-- bloch:roadmap schema=1 kind=mcp lane=general baseline=1.0.0 target=1.0.0 -->
+
+How to work this roadmap (any agent): run `bloch task start R-xxx --agent <you>` before working a task, `bloch task done R-xxx` when you believe it is complete — done runs every `verify:` command and flips the task green only if all pass; there is no override. `bloch task fail R-xxx --error "..."` records a failure. Fixes learned the hard way land in `.ai/memory/lessons.md` via the inbox/promote flow and are surfaced in every HANDOFF.
+
+## Phase 1 — Baseline truth
+- [x] R-101 Build is green from a clean checkout
+  - verify: cargo build
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:34Z
+- [x] R-102 Existing tests pass at the baseline
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:34Z
+- [x] R-103 Repo identity, baseline version, and this roadmap are recorded
+  - verify: test -f .ai/roadmap.md
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:26Z
+
+## Phase 2 — Core complete
+- [x] R-201 Tool surface is contracted: every tool has a complete schema and annotations from birth
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:34Z
+- [x] R-202 Tool count stays within the declared budget (<= 25 tools)
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:34Z
+- [x] R-203 Typed error and refusal behaviour is implemented in server code, never left to client hints
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:34Z
+
+## Phase 3 — Tests and gates
+- [x] R-301 Validation tests cover the happy path end to end (half the test split)
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+- [x] R-302 Adversarial tests cover malformed, oversized, and hostile inputs (half the test split)
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+- [x] R-303 Refusal and typed-error behaviour is covered by tests, including oversized payloads
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+
+## Phase 4 — Hardening
+- [ ] R-401 MCP Inspector conformance pass is recorded as evidence
+  - verify: cargo test
+  - evidence:
+- [x] R-402 Client matrix is verified with at least two real clients
+  - verify: cargo test
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+- [x] R-403 Declared-vs-detected access (EFLO) check passes: no tool exceeds its annotations
+  - verify: cargo clippy -- -D warnings
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+- [x] R-404 Registry/release packaging builds from a clean checkout
+  - verify: cargo build
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+
+## Phase 5 — Docs
+- [ ] R-501 README documents install, usage, and verification
+  - verify: test -f README.md
+  - evidence:
+- [x] R-502 CHANGELOG records every user-facing change
+  - verify: test -f CHANGELOG.md
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+- [x] R-503 Tool reference documents every tool, schema, annotation, and error kind
+  - verify: test -f README.md
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+
+## Phase 6 — Release v1
+- [x] R-601 Version is bumped to 1.0.0 across Cargo.toml, Cargo.lock, and server.json, and the changelog records the release
+  - verify: grep -q 'version = "1.0.0"' Cargo.toml && grep -q '"version":"1.0.0"' server.json && grep -q '## 1.0.0' CHANGELOG.md
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+- [x] R-602 Full gate suite is green on the 1.0.0 tree (cargo test, fmt --check, clippy -D warnings)
+  - verify: cargo test -q && cargo fmt --check && cargo clippy --all-targets -q -- -D warnings
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:40Z
+- [x] R-603 Utilization evidence is filed: a real scripted session against the 1.0.0 binary runs the release-prep flow on a fixture artifact, including the tamper-refusal leg
+  - verify: test -f UTILIZATION.md
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:35Z
+- [x] R-604 Publication readiness is proven by cargo publish --dry-run for slipway-mcp 1.0.0 (the publish itself is window-gated and fired by the coordinator, not by this gate)
+  - verify: cargo publish --dry-run --allow-dirty -q
+  - evidence: 1 verify commands, all exit 0 at 2026-10-29T06:24:45Z
+- [ ] R-605 Witness-bundle L2 consumer check (G-W2): verify the light-show Play AAB against the F-Droid APK with fathom's witness bundle — DEFERRED, pending fathom's witness-bundle disposition; not a 1.0.0 blocker
+  - verify: test -f UTILIZATION.md
+  - evidence: deferred 2026-10-28 (night-slipway): fathom witness-bundle disposition lands later in the fleet-to-1.0 night; the L2 verdict files when it does.
