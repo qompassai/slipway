@@ -1,0 +1,20 @@
+[package]
+name = "slipway-tui"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+repository = "https://github.com/qompassai/slipway"
+description = "Fleet-pattern terminal UI for the slipway Android build/sign/verify/install/release MCP server."
+
+[dependencies]
+# The member's own library: the facade prefers it where reachable
+# (tools::dispatch), with an MCP stdio client as the fallback.
+slipway = { path = "../..", package = "slipway-mcp" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.9"
+ratatui = "0.29"
+crossterm = "0.29"
+
+[lints.clippy]
+all = "warn"

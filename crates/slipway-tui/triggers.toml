@@ -1,0 +1,14 @@
+# Slipway trigger rules (DESIGN D4). A rule not listed here and not
+# visible in the Fleet panel does not exist. Birth metadata is
+# stamped on every firing (BLOCH lane law, D-1030).
+
+[[rule]]
+id = "slipway-pipeline-to-bloch-lesson"
+origin_lane = "qompass"
+content_label = "sfw"
+event = "pipeline.completed"
+require_all_gates_green = true
+target_mcp = "bloch"
+target_tool = "lesson_candidate"
+mode = "auto"
+enabled = true
