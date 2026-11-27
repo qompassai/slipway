@@ -3,7 +3,7 @@
   "name": "ai.qompass/slipway",
   "title": "Slipway",
   "description": "Android build/sign/verify/install/release MCP server with measured certification gates.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "websiteUrl": "https://qompass.ai/solutions/slipway/",
   "repository": {
     "url": "https://github.com/qompassai/slipway",
@@ -11,9 +11,9 @@
   },
   "packages": [
     {
-      "registryType": "mcpb",
-      "identifier": "https://github.com/qompassai/slipway/releases/download/v1.0.0/slipway-mcp-1.0.0-linux-x64.mcpb",
-      "fileSha256": "0ae44dcd04929300ce022f22962d9a49c0d803c1d690a7ef968b48c882b05ca9",
+      "registryType": "cargo",
+      "identifier": "slipway-mcp",
+      "version": "1.1.0",
       "transport": {
         "type": "stdio"
       }

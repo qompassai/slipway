@@ -1,5 +1,6 @@
 # slipway
 [![crates.io](https://img.shields.io/crates/v/slipway-mcp.svg)](https://crates.io/crates/slipway-mcp) [![MCP Registry](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.modelcontextprotocol.io%2Fv0%2Fservers%2Fai.qompass%252Fslipway%2Fversions&query=%24.servers%5B0%5D.server.version&label=MCP%20Registry)](https://registry.modelcontextprotocol.io/v0/servers/ai.qompass%2Fslipway/versions)
+mcp-name: ai.qompass/slipway
 
 A small deterministic Rust MCP server that builds, signs, verifies,
 installs, and prepares releases of the Owner's own Android apps —

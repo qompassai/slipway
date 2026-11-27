@@ -1,5 +1,11 @@
 # Changelog — slipway
 
+## 1.1.0 — 2026-11-27
+
+- First publication to the MCP Registry as `ai.qompass/slipway` (Registry onboarding scoped by the release sweep record, ~/workspace/release-sweep-20261127/RECORD.md, held item 7). server.json package surface is now the cargo entry (`slipway-mcp` 1.1.0, stdio): the MCPB bundle entry named the 1.0.0 bundle by SHA-256 and no 1.1.0 bundle exists, so it is retired rather than carried forward stale.
+- README gains the `mcp-name: ai.qompass/slipway` ownership marker the Registry verifies against the crates.io package.
+- No tool-surface or behaviour change from 1.0.0.
+
 ## 1.0.0 — 2026-10-28
 
 The 1.0 release line for the estate MCP fleet (fleet-to-1.0
